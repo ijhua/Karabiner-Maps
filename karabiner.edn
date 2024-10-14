@@ -1,0 +1,79 @@
+{
+    :devices {:8bitdo [{:vendor_id 11720 :product_id 36897}]}
+    :applications {
+        :firefox ["^org\\.mozilla\\.firefox$"]
+        :notion ["notion\\.id"]
+    }
+    :main [
+        
+        ;; Layer setup using conditional variables
+        {:des "tap to set layers"
+        :rules [:8bitdo 
+                [:n [["more-letters-mode" 0][:noti "Layer Mode" "More Letter: Off"]]["more-letters-mode" 1]]
+                [:n [["more-letters-mode" 1][:noti "Layer Mode" "More Letter: On"]["review-mode" 0] ["media-mode" 0]] ["more-letters-mode" 0]]
+                [:o [["review-mode" 0][:noti "Layer Mode" "Review Mode: Off"]]["review-mode" 1]]
+                [:o [["review-mode" 1][:noti "Layer Mode" "Review Mode: On"] ["more-letters-mode" 0] ["media-mode" 0]]["review-mode" 0]]
+                [:t [["media-mode" 0][:noti "Layer Mode" "Media Mode: Off"]]["media-mode" 1]]
+                [:t [["media-mode" 1][:noti "Layer Mode" "Media Mode: On"] ["more-letters-mode" 0] ["review-mode" 0]]["media-mode" 0]]
+        ]
+        }
+
+        ;; Review mode
+        {:des "review mode"
+        :rules [
+                [:d [:!Cy] [:review-mode :8bitdo :firefox]]
+                [:d :vk_none [:review-mode :8bitdo]]
+                [:a [:!Ctab] [:review-mode :8bitdo]]
+                [:b [:!Sreturn_or_enter] [:review-mode :8bitdo :notion]]
+                [:b :vk_none [:review-mode :8bitdo]]
+                [:c [:!Cv] [:review-mode :8bitdo]]
+                [:left_arrow [:!Cz] [:review-mode :8bitdo]]
+                [:l [:!Cslash] [:review-mode :8bitdo :notion]]
+                [:l :down_arrow [:review-mode :8bitdo]]
+        ]
+        }
+        ;; Media mode 
+        {:des "media mode" 
+        :rules [
+                [:d :play_or_pause [:media-mode :8bitdo]]
+                [:left_arrow [:!CTS4] [:media-mode :8bitdo]]
+                ;; add additional changes after deciding shortcuts for media player
+
+        ]
+        }
+        ;; More letter mode
+        {:des "more letters mode"
+        :rules [
+                [:d :e [:more-letters-mode :8bitdo]]
+                [:a :f [:more-letters-mode :8bitdo]]
+                [:b :g [:more-letters-mode :8bitdo]]
+                [:c :h [:more-letters-mode :8bitdo]]
+                [:h :a [:more-letters-mode :8bitdo]]
+                [:e :b [:more-letters-mode :8bitdo]]
+                [:f :c [:more-letters-mode :8bitdo]]
+                [:g :d [:more-letters-mode :8bitdo]]
+        ]
+        }
+        
+
+
+        {:des "default arrow keys and letters for vertical use"
+        :rules [:8bitdo
+                [:left_arrow :right_arrow]
+                [:l :down_arrow]
+                [:r :up_arrow]
+                [:right_arrow :left_arrow]
+                [:d :a]
+                [:a :b]
+                [:b :c]
+                [:c :d]
+                [:h :e]
+                [:e :f]
+                [:f :g]
+                [:g :h]
+                ]
+        }
+    ]
+        
+}
+    
