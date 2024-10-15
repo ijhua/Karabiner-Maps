@@ -30,6 +30,9 @@
                 [:left_arrow [:!Cz] [:review-mode :8bitdo]]
                 [:l [:!Cslash] [:review-mode :8bitdo :notion]]
                 [:l :down_arrow [:review-mode :8bitdo]]
+                [:h :!TSj [:review-mode :8bitdo]]
+                [:e :!TSk [:review-mode :8bitdo]]
+                [:f :!Ck [:review-mode :8bitdo]]
         ]
         }
         ;; Media mode 
